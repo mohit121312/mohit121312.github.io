@@ -1,0 +1,28 @@
+CREATE TABLE martha(Id number(3) Primary Key,Name varchar(20) Not null,Age Number(3) check(Age>18), P_no number(10),Address varchar(20));
+INSERT INTO martha(Id,name,age,p_no,Address) values(1,'ajay',19,9522523484,'indore');
+INSERT INTO martha(Id,name,age,p_no,Address) values(2,'ajay',20,95,'indore');
+INSERT INTO martha(Id,name,age,p_no,Address) values(3,'ajay',21,96,'dewas');
+INSERT INTO martha(Id,name,age,p_no,Address) values(4,'ajay',22,97,'ujjain');
+
+SELECT *FROM martha
+INSERT INTO martha(Id,name,age,p_no,Address) values(5,'sohan',23,98,'bhopal');
+SELECT *FROM martha
+
+CREATE TABLE abc(Id number(2), Name varchar(20),Age number(3),P_No number(10),Address varchar(20), CONSTRAINT pk PRIMARY KEY(Id), CONSTRAINT nn UNIQUE(Name), CONSTRAINT ch CHECK(Age>18),CONSTRAINT un UNIQUE(P_No) );
+
+INSERT INTO abc(Id,name,age,p_no,Address) values(1,'ajay',19,9522523484,'indore');
+INSERT INTO abc(Id,name,age,p_no,Address) values(2,'ajay',20,95,'indore');
+INSERT INTO abc(Id,name,age,p_no,Address) values(3,'ajay',21,96,'dewas');
+INSERT INTO abc(Id,name,age,p_no,Address) values(4,'ajay',22,97,'ujjain');
+SELECT *FROM abc
+ALTER TABLE abc DROP CONSTRAINT ch;
+
+ALTER TABLE abc DROP CONSTRAINT pk;
+
+ALTER TABLE abc ADD(CONSTRAINT fk FOREIGN KEY(Id) REFERENCES martha(Id));
+INSERT INTO abc(Id,name,age,p_no,Address) values(7,'qw',22,97,'ujjain');
+INSERT INTO martha(Id,name,age,p_no,Address) values(7,'qw',22,97,'ujjain');
+INSERT INTO abc(Id,name,age,p_no,Address) values(7,'qw',22,97,'ujjain');
+SELECT * FROM martha;
+
+SELECT * FROM abc;
